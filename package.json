@@ -1,0 +1,7 @@
+{
+  "name": "assembly-ts",
+  "description": "Korea's national assembly open api mapping",
+  "version": "0.0.1",
+  "license": "MIT",
+  "packageManager": "yarn@4.1.1"
+}
