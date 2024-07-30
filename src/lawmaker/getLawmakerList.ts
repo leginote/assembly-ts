@@ -55,8 +55,7 @@ const transform = (v: Row) => ({
   committee: v.CMIT_NM,
   belongingCommitteeName: v.BLNG_CMIT_NM,
   're-electionClassificationDivision': v.RLCT_DIV_NM,
-  // @TODO add this field
-  // GTELT_ERACO: number; // 당선대수
+  GTELT_ERACO: v.GTELT_ERACO, // 당선대수
   gender: v.NTR_DIV,
   phone: v.NAAS_TEL_NO,
   email: v.NAAS_EMAIL_ADDR,
@@ -70,7 +69,7 @@ const transform = (v: Row) => ({
 });
 
 /**
- * @description if you want `당선대수` please contribute this library. I can't translate this word
+ * @description GTELT_ERACO mean `당선대수`, please contribute this library. I can't translate this word
  */
 export const getLawmakerList = async ({ page, take, ...rest }: Argument) => {
   const { code: NAAS_CD, name: NAAS_NM, politicalPartyName: PLPT_NM, belongingCommitteeName: BLNG_CMIT_NM } = rest;
