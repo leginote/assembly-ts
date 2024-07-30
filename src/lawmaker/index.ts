@@ -1,0 +1,1 @@
+export { getLawmakerList } from './getLawmakerList';

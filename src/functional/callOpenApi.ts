@@ -57,9 +57,10 @@ export const callOpenApi = <Command extends ApiCommand, Row extends object>(
           })
             .then((v) => v.json() as Promise<Response<Command, Row>>)
             .then((v) => {
-              if (v[command][0].head[1].RESULT.CODE.startsWith('INFO')) {
+              if (v[command][0].head[1].RESULT.CODE === 'INFO-000') {
                 return v;
               }
+
               throw new OpenApiResponseError(v[command][0].head[1].RESULT.CODE);
             })
         );
