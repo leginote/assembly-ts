@@ -1,6 +1,6 @@
 import { callOpenApi } from '../functional';
 import { PaginationType } from '../types/callOpenApi';
-import { variableTransferlatedDictionary } from '../constant/index';
+import { translatedVariableDictionary } from '../constant/index';
 
 interface Lawmaker {
   NAAS_CD: string; // 국회의원코드
@@ -43,30 +43,30 @@ type Argument = {
 const command = 'ALLNAMEMBER';
 
 const transform = (v: Row) => ({
-  [variableTransferlatedDictionary['국회의원코드']]: v.NAAS_CD,
-  [variableTransferlatedDictionary['국회의원명']]: v.NAAS_NM,
-  [variableTransferlatedDictionary['국회의원한자명']]: v.NAAS_CH_NM,
-  [variableTransferlatedDictionary['국회의원영문명']]: v.NAAS_EN_NM,
-  [variableTransferlatedDictionary['생일구분코드']]: v.BIRDY_DIV_CD,
-  [variableTransferlatedDictionary['생일일자']]: v.BIRDY_DT,
-  [variableTransferlatedDictionary['직책명']]: v.DTY_NM,
-  [variableTransferlatedDictionary['정당명']]: v.PLPT_NM,
-  [variableTransferlatedDictionary['선거구명']]: v.ELECD_NM,
-  [variableTransferlatedDictionary['선거구구분명']]: v.ELECD_DIV_NM,
-  [variableTransferlatedDictionary['위원회명']]: v.CMIT_NM,
-  [variableTransferlatedDictionary['소속위원회명']]: v.BLNG_CMIT_NM,
-  [variableTransferlatedDictionary['재선구분명']]: v.RLCT_DIV_NM,
-  [variableTransferlatedDictionary['당선대수']]: v.GTELT_ERACO, // 당선대수
-  [variableTransferlatedDictionary['성별']]: v.NTR_DIV,
-  [variableTransferlatedDictionary['전화번호']]: v.NAAS_TEL_NO,
-  [variableTransferlatedDictionary['국회의원이메일주소']]: v.NAAS_EMAIL_ADDR,
-  [variableTransferlatedDictionary['국회의원홈페이지URL']]: v.NAAS_HP_URL,
-  [variableTransferlatedDictionary['보좌관']]: v.AIDE_NM,
-  [variableTransferlatedDictionary['비서관']]: v.CHF_SCRT_NM,
-  [variableTransferlatedDictionary['비서']]: v.SCRT_NM,
-  [variableTransferlatedDictionary['약력']]: v.BRF_HST,
-  [variableTransferlatedDictionary['사무실호실']]: v.OFFM_RNUM_NO,
-  [variableTransferlatedDictionary['사진']]: v.NAAS_PIC,
+  [translatedVariableDictionary['국회의원코드']]: v.NAAS_CD,
+  [translatedVariableDictionary['국회의원명']]: v.NAAS_NM,
+  [translatedVariableDictionary['국회의원한자명']]: v.NAAS_CH_NM,
+  [translatedVariableDictionary['국회의원영문명']]: v.NAAS_EN_NM,
+  [translatedVariableDictionary['생일구분코드']]: v.BIRDY_DIV_CD,
+  [translatedVariableDictionary['생일일자']]: v.BIRDY_DT,
+  [translatedVariableDictionary['직책명']]: v.DTY_NM,
+  [translatedVariableDictionary['정당명']]: v.PLPT_NM,
+  [translatedVariableDictionary['선거구명']]: v.ELECD_NM,
+  [translatedVariableDictionary['선거구구분명']]: v.ELECD_DIV_NM,
+  [translatedVariableDictionary['위원회명']]: v.CMIT_NM,
+  [translatedVariableDictionary['소속위원회명']]: v.BLNG_CMIT_NM,
+  [translatedVariableDictionary['재선구분명']]: v.RLCT_DIV_NM,
+  [translatedVariableDictionary['당선대수']]: v.GTELT_ERACO, // 당선대수
+  [translatedVariableDictionary['성별']]: v.NTR_DIV,
+  [translatedVariableDictionary['전화번호']]: v.NAAS_TEL_NO,
+  [translatedVariableDictionary['국회의원이메일주소']]: v.NAAS_EMAIL_ADDR,
+  [translatedVariableDictionary['국회의원홈페이지URL']]: v.NAAS_HP_URL,
+  [translatedVariableDictionary['보좌관']]: v.AIDE_NM,
+  [translatedVariableDictionary['비서관']]: v.CHF_SCRT_NM,
+  [translatedVariableDictionary['비서']]: v.SCRT_NM,
+  [translatedVariableDictionary['약력']]: v.BRF_HST,
+  [translatedVariableDictionary['사무실호실']]: v.OFFM_RNUM_NO,
+  [translatedVariableDictionary['사진']]: v.NAAS_PIC,
 });
 
 /**

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { getLawmakerList } from './getLawmakerList';
 import { callOpenApi } from '../functional';
-import { variableTransferlatedDictionary } from '../constant';
+import { translatedVariableDictionary } from '../constant';
 
 vi.mock('../functional', () => ({
   callOpenApi: vi.fn(),
@@ -50,29 +50,29 @@ describe('getLawmakerList', () => {
 
     expect(lawmakers).toHaveLength(1);
     expect(lawmakers[0]).toEqual({
-      [variableTransferlatedDictionary['국회의원코드']]: '1234',
-      [variableTransferlatedDictionary['국회의원명']]: 'John Doe',
-      [variableTransferlatedDictionary['국회의원한자명']]: '张三',
-      [variableTransferlatedDictionary['국회의원영문명']]: 'John Doe',
-      [variableTransferlatedDictionary['생일구분코드']]: '1',
-      [variableTransferlatedDictionary['생일일자']]: '1990-01-01',
-      [variableTransferlatedDictionary['직책명']]: 'Lawmaker',
-      [variableTransferlatedDictionary['정당명']]: 'Democratic Party',
-      [variableTransferlatedDictionary['선거구명']]: 'District A',
-      [variableTransferlatedDictionary['선거구구분명']]: 'District',
-      [variableTransferlatedDictionary['위원회명']]: 'Committee A',
-      [variableTransferlatedDictionary['소속위원회명']]: 'Committee A',
-      [variableTransferlatedDictionary['재선구분명']]: 'First-term',
-      [variableTransferlatedDictionary['성별']]: 'Male',
-      [variableTransferlatedDictionary['전화번호']]: '123-456-7890',
-      [variableTransferlatedDictionary['국회의원이메일주소']]: 'john.doe@example.com',
-      [variableTransferlatedDictionary['국회의원홈페이지URL']]: 'https://example.com/john-doe',
-      [variableTransferlatedDictionary['보좌관']]: 'Jane Smith',
-      [variableTransferlatedDictionary['비서관']]: 'Bob Johnson',
-      [variableTransferlatedDictionary['비서']]: 'Alice Williams',
-      [variableTransferlatedDictionary['약력']]: 'John Doe is a lawmaker.',
-      [variableTransferlatedDictionary['사무실호실']]: '123',
-      [variableTransferlatedDictionary['사진']]: 'https://example.com/john-doe.jpg',
+      [translatedVariableDictionary['국회의원코드']]: '1234',
+      [translatedVariableDictionary['국회의원명']]: 'John Doe',
+      [translatedVariableDictionary['국회의원한자명']]: '张三',
+      [translatedVariableDictionary['국회의원영문명']]: 'John Doe',
+      [translatedVariableDictionary['생일구분코드']]: '1',
+      [translatedVariableDictionary['생일일자']]: '1990-01-01',
+      [translatedVariableDictionary['직책명']]: 'Lawmaker',
+      [translatedVariableDictionary['정당명']]: 'Democratic Party',
+      [translatedVariableDictionary['선거구명']]: 'District A',
+      [translatedVariableDictionary['선거구구분명']]: 'District',
+      [translatedVariableDictionary['위원회명']]: 'Committee A',
+      [translatedVariableDictionary['소속위원회명']]: 'Committee A',
+      [translatedVariableDictionary['재선구분명']]: 'First-term',
+      [translatedVariableDictionary['성별']]: 'Male',
+      [translatedVariableDictionary['전화번호']]: '123-456-7890',
+      [translatedVariableDictionary['국회의원이메일주소']]: 'john.doe@example.com',
+      [translatedVariableDictionary['국회의원홈페이지URL']]: 'https://example.com/john-doe',
+      [translatedVariableDictionary['보좌관']]: 'Jane Smith',
+      [translatedVariableDictionary['비서관']]: 'Bob Johnson',
+      [translatedVariableDictionary['비서']]: 'Alice Williams',
+      [translatedVariableDictionary['약력']]: 'John Doe is a lawmaker.',
+      [translatedVariableDictionary['사무실호실']]: '123',
+      [translatedVariableDictionary['사진']]: 'https://example.com/john-doe.jpg',
     });
   });
   it('should return an empty list when no lawmakers are found', async () => {

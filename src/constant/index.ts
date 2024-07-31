@@ -1,7 +1,7 @@
 /**
  * @description if you modify this properties, you should upgrade the minor version because it will be a break changes
  */
-export const variableTransferlatedDictionary = {
+export const translatedVariableDictionary = {
   국회의원코드: 'lawmakerCode',
   국회의원명: 'lawmakerName',
   국회의원한자명: 'lawmakerChineseName',
