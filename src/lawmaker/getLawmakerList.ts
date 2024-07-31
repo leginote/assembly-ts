@@ -1,5 +1,6 @@
 import { callOpenApi } from '../functional';
 import { PaginationType } from '../types/callOpenApi';
+import { translatedVariableDictionary } from '../constant/index';
 
 interface Lawmaker {
   NAAS_CD: string; // 국회의원코드
@@ -42,30 +43,30 @@ type Argument = {
 const command = 'ALLNAMEMBER';
 
 const transform = (v: Row) => ({
-  code: v.NAAS_CD,
-  name: v.NAAS_NM,
-  chineseName: v.NAAS_CH_NM,
-  englishName: v.NAAS_EN_NM,
-  birthdayDivisionCode: v.BIRDY_DIV_CD,
-  birthday: v.BIRDY_DT,
-  duty: v.DTY_NM,
-  politicalParty: v.PLPT_NM,
-  electoralDistrict: v.ELECD_NM,
-  electoralDistrictDivision: v.ELECD_DIV_NM,
-  committee: v.CMIT_NM,
-  belongingCommitteeName: v.BLNG_CMIT_NM,
-  're-electionClassificationDivision': v.RLCT_DIV_NM,
-  GTELT_ERACO: v.GTELT_ERACO, // 당선대수
-  gender: v.NTR_DIV,
-  phone: v.NAAS_TEL_NO,
-  email: v.NAAS_EMAIL_ADDR,
-  homepage: v.NAAS_HP_URL,
-  aide: v.AIDE_NM,
-  seniorSecretary: v.CHF_SCRT_NM,
-  secretary: v.SCRT_NM,
-  profile: v.BRF_HST,
-  officeRoom: v.OFFM_RNUM_NO,
-  picture: v.NAAS_PIC,
+  [translatedVariableDictionary['국회의원코드']]: v.NAAS_CD,
+  [translatedVariableDictionary['국회의원명']]: v.NAAS_NM,
+  [translatedVariableDictionary['국회의원한자명']]: v.NAAS_CH_NM,
+  [translatedVariableDictionary['국회의원영문명']]: v.NAAS_EN_NM,
+  [translatedVariableDictionary['생일구분코드']]: v.BIRDY_DIV_CD,
+  [translatedVariableDictionary['생일일자']]: v.BIRDY_DT,
+  [translatedVariableDictionary['직책명']]: v.DTY_NM,
+  [translatedVariableDictionary['정당명']]: v.PLPT_NM,
+  [translatedVariableDictionary['선거구명']]: v.ELECD_NM,
+  [translatedVariableDictionary['선거구구분명']]: v.ELECD_DIV_NM,
+  [translatedVariableDictionary['위원회명']]: v.CMIT_NM,
+  [translatedVariableDictionary['소속위원회명']]: v.BLNG_CMIT_NM,
+  [translatedVariableDictionary['재선구분명']]: v.RLCT_DIV_NM,
+  [translatedVariableDictionary['당선대수']]: v.GTELT_ERACO, // 당선대수
+  [translatedVariableDictionary['성별']]: v.NTR_DIV,
+  [translatedVariableDictionary['전화번호']]: v.NAAS_TEL_NO,
+  [translatedVariableDictionary['국회의원이메일주소']]: v.NAAS_EMAIL_ADDR,
+  [translatedVariableDictionary['국회의원홈페이지URL']]: v.NAAS_HP_URL,
+  [translatedVariableDictionary['보좌관']]: v.AIDE_NM,
+  [translatedVariableDictionary['비서관']]: v.CHF_SCRT_NM,
+  [translatedVariableDictionary['비서']]: v.SCRT_NM,
+  [translatedVariableDictionary['약력']]: v.BRF_HST,
+  [translatedVariableDictionary['사무실호실']]: v.OFFM_RNUM_NO,
+  [translatedVariableDictionary['사진']]: v.NAAS_PIC,
 });
 
 /**
