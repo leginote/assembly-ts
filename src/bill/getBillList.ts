@@ -109,6 +109,5 @@ export const getBillList = async ({ page, take, ...rest }: Argument) => {
       PROC_DT,
     }
   );
-  console.log('API response', res);
   return res.TVBPMBILL11[1].row.map(transform);
 };
