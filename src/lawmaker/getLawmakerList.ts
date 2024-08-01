@@ -80,5 +80,5 @@ export const getLawmakerList = async ({ page, take, ...rest }: Argument) => {
     { NAAS_CD, NAAS_NM, PLPT_NM, BLNG_CMIT_NM }
   );
 
-  return res.ALLNAMEMBER[1].row.map(transform);
+  return res[command][1].row.map(transform);
 };
