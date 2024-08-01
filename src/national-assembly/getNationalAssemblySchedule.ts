@@ -38,7 +38,9 @@ const transform = (v: Row) => ({
   [translatedVariableDictionary['행사_주체자']]: v.EV_INST_NM,
   [translatedVariableDictionary['행사_장소']]: v.EV_PLC,
 });
-
+/**
+ * @description call https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11437
+ */
 export const getNationalAssemblySchedule = async ({ page, take, ...rest }: Argument) => {
   const { scheduleKind: SCH_KIND, scheduleDate: SCH_DT } = rest;
   const res = await callOpenApi<typeof command, Row>(command, { page, take }, { SCH_KIND, SCH_DT });
