@@ -1,1 +1,1 @@
-export * from './getNationalAssemblySchedule';
+export { getNationalAssemblySchedule } from './getNationalAssemblySchedule';
