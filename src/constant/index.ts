@@ -57,6 +57,6 @@ export const translatedVariableDictionary = {
   소관위처리일: 'jurisdictionCommitteeProcessDate',
   소관위상정일: 'jurisdictionCommitteePresentDate',
   대표발의자코드: 'leadProposerCode',
-  본회의심의결과: 'plenarysessionReviewResult',
+  본회의심의결과: 'plenarySessionReviewResult',
   의결일: 'resolutionDate',
 } as const;
