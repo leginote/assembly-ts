@@ -1,6 +1,5 @@
 import { ApiCommand, OpenApiCode, OpenApiResponseKind, PaginationType } from '../types/callOpenApi';
 import { getApiKey } from '../';
-import { Micro } from 'effect';
 
 const baseURL = 'https://open.assembly.go.kr';
 
@@ -31,39 +30,34 @@ export const callOpenApi = <Command extends ApiCommand, Row extends object>(
   command: Command,
   pagination: PaginationType,
   args: Record<string, string | undefined>
-) =>
-  Micro.runPromise(
-    getApiKey().pipe(
-      Micro.flatMap((key) => {
-        const query = new URLSearchParams();
-        query.append('key', key);
-        query.append('pIndex', pagination.page.toString());
-        query.append('pSize', pagination.take.toString());
+) => {
+  const key = getApiKey();
 
-        Object.entries(args).forEach(([key, value]) => {
-          if (!value) {
-            return;
-          }
+  const query = new URLSearchParams();
+  query.append('key', key);
+  query.append('pIndex', pagination.page.toString());
+  query.append('pSize', pagination.take.toString());
 
-          query.append(key, value);
-        });
+  Object.entries(args).forEach(([key, value]) => {
+    if (!value) {
+      return;
+    }
 
-        return Micro.promise(() =>
-          fetch(`${baseURL}/portal/openapi/${command}?type=json&${query.toString()}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-            .then((v) => v.json() as Promise<Response<Command, Row>>)
-            .then((v) => {
-              if (v[command][0].head[1].RESULT.CODE === 'INFO-000') {
-                return v;
-              }
+    query.append(key, value);
+  });
 
-              throw new OpenApiResponseError(v[command][0].head[1].RESULT.CODE);
-            })
-        );
-      })
-    )
-  );
+  return fetch(`${baseURL}/portal/openapi/${command}?type=json&${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((v) => v.json() as Promise<Response<Command, Row>>)
+    .then((v) => {
+      if (v[command][0].head[1].RESULT.CODE === 'INFO-000') {
+        return v;
+      }
+
+      throw new OpenApiResponseError(v[command][0].head[1].RESULT.CODE);
+    });
+};
