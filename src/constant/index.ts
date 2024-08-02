@@ -23,7 +23,7 @@ export const translatedVariableDictionary = {
   위원회명: 'committeeName',
   소속위원회명: 'belongingCommitteeName',
   재선구분명: 'reElectionClassificationDivision',
-  당선대수: 'GTELT_ERACO',
+  당선대수: 'electionCongress',
   성별: 'gender',
   전화번호: 'phoneNumber',
   국회의원이메일주소: 'email',
