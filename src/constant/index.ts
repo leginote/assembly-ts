@@ -4,6 +4,10 @@
  * @ignore `~코드`와 같은 이름을 지칭하는 변수의 경우 `Code`로 끝나야함
  * @ignore `~일자`와 같은 이름을 지칭하는 변수의 경우 `Date`로 끝나야함
  * @ignore `~구분`과 같은 이름을 지칭하는 변수의 경우 `Division`으로 끝나야함, 만약 `구분명`이라면 `Division`을 사용
+ * @ignore `~처리`과 같은 이름을 지칭하는 변수의 경우 `Process`으로 끝나야함
+ * @ignore `~상정`과 같은 이름을 지칭하는 변수의 경우 `Present`으로 끝나야함
+ * @ignore `~회부`과 같은 이름을 지칭하는 변수의 경우 `Submit`으로 끝나야함
+ * @ignore `~의결`과 같은 이름을 지칭하는 변수의 경우 `Resolution`으로 끝나야함
  */
 export const translatedVariableDictionary = {
   국회의원코드: 'lawmakerCode',
@@ -30,4 +34,29 @@ export const translatedVariableDictionary = {
   약력: 'profile',
   사무실호실: 'officeRoom',
   사진: 'picture',
+
+  // 의안 관련 추가
+  의안ID: 'billID',
+  의안번호: 'billNumber',
+  대: 'age',
+  의안명: 'billName',
+  제안자: 'proposer',
+  제안자구분: 'proposerDivision',
+  제안일: 'proposeDate',
+  소관위코드: 'jurisdictionCommitteeCode',
+  소관위: 'jurisdictionCommittee',
+  소관위회부일: 'jurisdictionCommitteeSubmitDate',
+  위원회심사_처리일: 'committeeReviewProcessDate',
+  의안상세정보_URL: 'billDetailUrl',
+  대표발의자: 'leadProposer',
+  법사위처리결과: 'legislationAndJudiciaryCommitteeProcessResult',
+  법사위처리일: 'legislationAndJudiciaryCommitteeProcessDate',
+  법사위상정일: 'legislationAndJudiciaryCommitteePresentDate',
+  법사위회부일: 'legislationAndJudiciaryCommitteeSubmitDate',
+  소관위처리결과: 'jurisdictionCommitteeProcessResult',
+  소관위처리일: 'jurisdictionCommitteeProcessDate',
+  소관위상정일: 'jurisdictionCommitteePresentDate',
+  대표발의자코드: 'leadProposerCode',
+  본회의심의결과: 'plenarySessionReviewResult',
+  의결일: 'resolutionDate',
 } as const;
