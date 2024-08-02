@@ -80,33 +80,20 @@ const transform = (v: Row) => ({
  * @description implementation of 법률안 심사 및 처리 API
  */
 export const getBillList = async ({ page, take, ...rest }: Argument) => {
-  const {
-    billID,
-    billNumber,
-    age,
-    billName,
-    proposer,
-    proposerDivision,
-    jurisdictionCommitteeCode,
-    jurisdictionCommittee,
-    plenarySessionReviewResult,
-    resolutionDate,
-  } = rest;
-
   const res = await callOpenApi<typeof command, Row>(
     command,
     { page, take },
     {
-      BILL_ID: billID,
-      BILL_NO: billNumber,
-      AGE: age,
-      BILL_NAME: billName,
-      PROPOSER: proposer,
-      PROPOSER_KIND: proposerDivision,
-      CURR_COMMITTEE_ID: jurisdictionCommitteeCode,
-      CURR_COMMITTEE: jurisdictionCommittee,
-      PROC_RESULT_CD: plenarySessionReviewResult,
-      PROC_DT: resolutionDate,
+      BILL_ID: rest.billID,
+      BILL_NO: rest.billNumber,
+      AGE: rest.age,
+      BILL_NAME: rest.billName,
+      PROPOSER: rest.proposer,
+      PROPOSER_KIND: rest.proposerDivision,
+      CURR_COMMITTEE_ID: rest.jurisdictionCommitteeCode,
+      CURR_COMMITTEE: rest.jurisdictionCommittee,
+      PROC_RESULT_CD: rest.plenarySessionReviewResult,
+      PROC_DT: rest.resolutionDate,
     }
   );
   return res.TVBPMBILL11[1].row.map(transform);
