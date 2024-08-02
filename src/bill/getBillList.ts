@@ -36,16 +36,16 @@ type Row = {
 };
 
 type Argument = {
-  BILL_ID?: string; // 의안ID, 예시: BILL_ID='PRC_Z2Z1Z0Z3X2L4M0H9A2V6K5R0V7P2H1'
-  BILL_NO?: string; // 의안번호, 예시: BILL_NO='2114286'
-  AGE?: string; // 대, 예시: AGE='21'
-  BILL_NAME?: string; // 의안명(한글), 예시: BILL_NAME='의안명(한글) 검색어' (예시) BILL_NAME="80년
-  PROPOSER?: string; // 제안자, 예시: PROPOSER='제안자 검색어' (예시) PROPOSER=2012년
-  PROPOSER_KIND?: string; // 제안자구분, 예시: PROPOSER_KIND='정부'
-  CURR_COMMITTEE_ID?: string; // 소관위코드, 예시: CURR_COMMITTEE_ID='B002368'
-  CURR_COMMITTEE?: string; // 소관위, 예시: CURR_COMMITTEE='소관위 검색어' (예시) CURR_COMMITTEE=2002
-  PROC_RESULT_CD?: string; // 본회의심의결과, 예시: PROC_RESULT_CD='회기불계속폐기'
-  PROC_DT?: string; // 의결일, 예시: PROC_DT='2021-12-31'
+  billID?: string; // 의안ID, 예시: BILL_ID='PRC_Z2Z1Z0Z3X2L4M0H9A2V6K5R0V7P2H1'
+  billNumber?: string; // 의안번호, 예시: BILL_NO='2114286'
+  age?: string; // 대, 예시: AGE='21'
+  billName?: string; // 의안명(한글), 예시: BILL_NAME='의안명(한글) 검색어' (예시) BILL_NAME="80년
+  proposer?: string; // 제안자, 예시: PROPOSER='제안자 검색어' (예시) PROPOSER=2012년
+  proposerDivision?: string; // 제안자구분, 예시: PROPOSER_KIND='정부'
+  jurisdictionCommitteeCode?: string; // 소관위코드, 예시: CURR_COMMITTEE_ID='B002368'
+  jurisdictionCommittee?: string; // 소관위, 예시: CURR_COMMITTEE='소관위 검색어' (예시) CURR_COMMITTEE=2002
+  plenarySessionReviewResult?: string; // 본회의심의결과, 예시: PROC_RESULT_CD='회기불계속폐기'
+  resolutionDate?: string; // 의결일, 예시: PROC_DT='2021-12-31'
 } & PaginationType;
 
 const command = 'TVBPMBILL11';
@@ -81,32 +81,32 @@ const transform = (v: Row) => ({
  */
 export const getBillList = async ({ page, take, ...rest }: Argument) => {
   const {
-    BILL_ID: BILL_ID,
-    BILL_NO: BILL_NO,
-    AGE: AGE,
-    BILL_NAME: BILL_NAME,
-    PROPOSER: PROPOSER,
-    PROPOSER_KIND: PROPOSER_KIND,
-    CURR_COMMITTEE_ID: CURR_COMMITTEE_ID,
-    CURR_COMMITTEE: CURR_COMMITTEE,
-    PROC_RESULT_CD: PROC_RESULT_CD,
-    PROC_DT: PROC_DT,
+    billID,
+    billNumber,
+    age,
+    billName,
+    proposer,
+    proposerDivision,
+    jurisdictionCommitteeCode,
+    jurisdictionCommittee,
+    plenarySessionReviewResult,
+    resolutionDate,
   } = rest;
 
   const res = await callOpenApi<typeof command, Row>(
     command,
     { page, take },
     {
-      BILL_ID,
-      BILL_NO,
-      AGE,
-      BILL_NAME,
-      PROPOSER,
-      PROPOSER_KIND,
-      CURR_COMMITTEE_ID,
-      CURR_COMMITTEE,
-      PROC_RESULT_CD,
-      PROC_DT,
+      BILL_ID: billID,
+      BILL_NO: billNumber,
+      AGE: age,
+      BILL_NAME: billName,
+      PROPOSER: proposer,
+      PROPOSER_KIND: proposerDivision,
+      CURR_COMMITTEE_ID: jurisdictionCommitteeCode,
+      CURR_COMMITTEE: jurisdictionCommittee,
+      PROC_RESULT_CD: plenarySessionReviewResult,
+      PROC_DT: resolutionDate,
     }
   );
   return res.TVBPMBILL11[1].row.map(transform);
