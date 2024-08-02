@@ -96,5 +96,5 @@ export const getBillList = async ({ page, take, ...rest }: Argument) => {
       PROC_DT: rest.resolutionDate,
     }
   );
-  return res.TVBPMBILL11[1].row.map(transform);
+  return res[command][1].row.map(transform);
 };
