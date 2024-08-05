@@ -1,0 +1,1 @@
+export { getNationalAssemblySchedule } from './getNationalAssemblySchedule';

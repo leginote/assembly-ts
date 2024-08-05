@@ -3,7 +3,7 @@ export type PaginationType = {
   take: number;
 };
 
-export type ApiCommand = ('ALLNAMEMBER' | 'TVBPMBILL11') & string;
+export type ApiCommand = ('ALLNAMEMBER' | 'ALLSCHEDULE' | 'TVBPMBILL11') & string;
 
 export const OpenApiResponseKind = {
   'INFO-000': '정상 처리되었습니다.',

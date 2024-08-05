@@ -59,4 +59,13 @@ export const translatedVariableDictionary = {
   대표발의자코드: 'leadProposerCode',
   본회의심의결과: 'plenarySessionReviewResult',
   의결일: 'resolutionDate',
+  일정_종류: 'scheduleType',
+  일정_내용: 'scheduleContent',
+  일정_일자: 'scheduleDate',
+  일정_시간: 'scheduleTime',
+  회의_구분: 'conferenceDivision',
+  회의_회기: 'conferenceSession',
+  회의_차수: 'conferenceDegree',
+  행사_주체자: 'eventInstitution',
+  행사_장소: 'eventPlace',
 } as const;
