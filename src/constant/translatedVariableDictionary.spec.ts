@@ -94,5 +94,11 @@ describe('translatedVariableDictionary', () => {
 
     expectTypeOf(translatedVariableDictionary.생일구분코드).toEqualTypeOf<'birthdayDivisionCode'>();
     expect(translatedVariableDictionary.생일구분코드).toBe('birthdayDivisionCode');
+
+    expectTypeOf(translatedVariableDictionary.당선대수).toEqualTypeOf<'electionCongress'>();
+    expect(translatedVariableDictionary.당선대수).toBe('electionCongress');
+
+    expectTypeOf(translatedVariableDictionary.위원회심사_처리일).toEqualTypeOf<'committeeReviewProcessDate'>();
+    expect(translatedVariableDictionary.위원회심사_처리일).toBe('committeeReviewProcessDate');
   });
 });

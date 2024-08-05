@@ -1,6 +1,6 @@
 import { callOpenApi } from '../functional';
 import { PaginationType } from '../types/callOpenApi';
-import { translatedVariableDictionary } from '../constant/index';
+import { translatedVariableDictionary } from '../constant';
 
 interface Lawmaker {
   NAAS_CD: string; // 국회의원코드

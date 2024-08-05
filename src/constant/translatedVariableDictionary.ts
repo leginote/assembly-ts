@@ -10,16 +10,30 @@ export type FirstLetterLowerCase<T extends string> = T extends `${infer First}${
   ? `${Lowercase<First>}${Rest}`
   : T;
 
+const isEmpty = (args?: string): args is '' | undefined => args === '' || args == null;
+
 export const firstLetterLowerCase = <T extends string>(str: T) =>
   `${str.charAt(0).toLowerCase()}${str.slice(1)}` as FirstLetterLowerCase<T>;
 
-export const variable = <T extends ReadonlyArray<string>>(_template: TemplateStringsArray, ...args: T) =>
-  args.reduce((prev, cur, idx) => {
-    return idx === 0 ? firstLetterLowerCase(cur) : `${prev}${cur}`;
-  }, '') as T extends [infer First extends string, ...infer Rest extends ReadonlyArray<string>]
+export const variable = <T extends ReadonlyArray<string>>(_template: TemplateStringsArray, ...args: T) => {
+  return (args.reduce((prev, cur, idx) => {
+    if (idx !== 0) {
+      return `${prev}${_template[idx]}${cur}`;
+    }
+    const prefix = _template[idx];
+
+    if (isEmpty(prefix)) {
+      return `${prev}${firstLetterLowerCase(cur)}`;
+    }
+
+    return `${prev}${firstLetterLowerCase(prefix)}${cur}`;
+  }, '') + _template[args.length]) as T extends [
+    infer First extends string,
+    ...infer Rest extends ReadonlyArray<string>,
+  ]
     ? MergeString<[FirstLetterLowerCase<First>, ...Rest]>
     : MergeString<T>;
-
+};
 /**
  * @description if you modify this properties, you should upgrade the minor version because it will be a break changes
  */
