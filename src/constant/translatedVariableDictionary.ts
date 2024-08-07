@@ -44,7 +44,7 @@ const 상정일 = variable(`present`, 일자);
 const 일정 = 'schedule';
 const 시간 = 'time';
 const 회의 = 'conference';
-const 행사 = 'event;';
+const 행사 = 'event';
 
 export const translatedVariableDictionary = {
   국회의원코드: variable(국회의원, 코드),
