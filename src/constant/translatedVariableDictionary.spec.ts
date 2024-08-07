@@ -1,76 +1,34 @@
 import { describe, it, expectTypeOf, expect } from 'vitest';
-import {
-  firstLetterLowerCase,
-  FirstLetterLowerCase,
-  MergeString,
-  translatedVariableDictionary,
-  variable,
-} from './translatedVariableDictionary';
+import { translatedVariableDictionary, variable } from './translatedVariableDictionary';
+import * as H from 'hotscript';
 
-describe('MergeString', () => {
-  it('should merge an array of strings into a single string', () => {
-    // Test with a single string
-    expectTypeOf<MergeString<['hello']>>().toEqualTypeOf<'hello'>();
-
-    // Test with two strings
-    expectTypeOf<MergeString<['hello', 'world']>>().toEqualTypeOf<'helloworld'>();
-
-    // Test with multiple strings
-    expectTypeOf<MergeString<['hello', 'world', '123']>>().toEqualTypeOf<'helloworld123'>();
-
-    // Test with an empty array (should never happen)
-    expectTypeOf<MergeString<[]>>().toEqualTypeOf<never>();
+describe('variable function', () => {
+  it('should return correct variable name for single argument', () => {
+    const result = variable('test');
+    expect(result).toBe('test');
   });
-});
 
-describe('FirstLetterLowerCase', () => {
-  it('should convert the first letter of a string to lowercase', () => {
-    // Test with an uppercase string
-    expectTypeOf<FirstLetterLowerCase<'HELLO'>>().toEqualTypeOf<'hELLO'>();
-
-    // Test with a mixed-case string
-    expectTypeOf<FirstLetterLowerCase<'HelloWorld'>>().toEqualTypeOf<'helloWorld'>();
-
-    // Test with a single-letter string
-    expectTypeOf<FirstLetterLowerCase<'A'>>().toEqualTypeOf<'a'>();
-
-    // Test with an empty string (should return the same string)
-    expectTypeOf<FirstLetterLowerCase<''>>().toEqualTypeOf<''>();
+  it('should return correct variable name for multiple arguments', () => {
+    const result = variable('foo', 'bar', 'baz');
+    expect(result).toBe('fooBarBaz');
   });
-});
 
-describe('firstLetterLowerCase', () => {
-  it('should convert the first letter of a string to lowercase', () => {
-    // Test with an uppercase string
-    expect(firstLetterLowerCase('HELLO')).toBe('hELLO');
-
-    // Test with a mixed-case string
-    expect(firstLetterLowerCase('HelloWorld')).toBe('helloWorld');
-
-    // Test with a single-letter string
-    expect(firstLetterLowerCase('A')).toBe('a');
-
-    // Test with an empty string
-    expect(firstLetterLowerCase('')).toBe('');
+  it('should handle string arguments correctly', () => {
+    const result = variable('Hello', 'World');
+    expect(result).toBe('helloWorld');
   });
-});
 
-describe('variable', () => {
-  it('should merge and format strings correctly', () => {
-    // Test with a single string
-    expect(variable`hello`).toBe('hello');
+  it('should return correct type for single argument', () => {
+    const result: H.Call<H.Strings.CamelCase, 'test'> = variable('test');
+    expect(typeof result).toBe('string');
+  });
 
-    // Test with two strings
-    expect(variable`hello${'world'}`).toBe('helloworld');
-
-    // Test with multiple strings and formatting
-    expect(variable`hello${'World'}${'123'}`).toBe('helloWorld123');
-
-    // Test with an empty template string
-    expect(variable``).toBe('');
-
-    // Test with strings that should have their first letter lowercased
-    expect(variable`Hello${'World'}`).toBe('helloWorld');
+  it('should return correct type for multiple arguments', () => {
+    const result: H.Pipe<
+      ['foo', 'bar', 'baz'],
+      [H.Tuples.Map<H.Strings.Capitalize>, H.Tuples.Join<''>, H.Strings.Uncapitalize]
+    > = variable('foo', 'bar', 'baz');
+    expect(typeof result).toBe('string');
   });
 });
 
