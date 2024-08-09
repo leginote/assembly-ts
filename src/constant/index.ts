@@ -1,1 +1,1 @@
-export { translatedVariableDictionary } from './translatedVariableDictionary';
+export * from './translatedVariableDictionary';
