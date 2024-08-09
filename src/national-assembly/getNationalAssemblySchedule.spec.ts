@@ -1,7 +1,18 @@
 import { describe, it, expect, vi } from 'vitest';
 import { getNationalAssemblySchedule } from './getNationalAssemblySchedule';
 import { callOpenApi } from '../functional';
-import { translatedVariableDictionary } from '../constant';
+import {
+  위원회명,
+  일정_내용,
+  일정_시간,
+  일정_일자,
+  일정_종류,
+  행사_장소,
+  행사_주체자,
+  회의_구분,
+  회의_차수,
+  회의_회기,
+} from '../constant';
 
 vi.mock('../functional', () => ({
   callOpenApi: vi.fn(),
@@ -37,16 +48,16 @@ describe('getNationalAssemblySchedule', () => {
 
     expect(schedules).toHaveLength(1);
     expect(schedules[0]).toEqual({
-      [translatedVariableDictionary['일정_종류']]: 'Meeting',
-      [translatedVariableDictionary['일정_내용']]: 'Committee Meeting',
-      [translatedVariableDictionary['일정_일자']]: '2023-05-01',
-      [translatedVariableDictionary['일정_시간']]: '09:00',
-      [translatedVariableDictionary['회의_구분']]: 'Regular',
-      [translatedVariableDictionary['위원회명']]: 'Committee A',
-      [translatedVariableDictionary['회의_회기']]: '1',
-      [translatedVariableDictionary['회의_차수']]: '1',
-      [translatedVariableDictionary['행사_주체자']]: 'National Assembly',
-      [translatedVariableDictionary['행사_장소']]: 'Room 123',
+      [일정_종류]: 'Meeting',
+      [일정_내용]: 'Committee Meeting',
+      [일정_일자]: '2023-05-01',
+      [일정_시간]: '09:00',
+      [회의_구분]: 'Regular',
+      [위원회명]: 'Committee A',
+      [회의_회기]: '1',
+      [회의_차수]: '1',
+      [행사_주체자]: 'National Assembly',
+      [행사_장소]: 'Room 123',
     });
   });
 
