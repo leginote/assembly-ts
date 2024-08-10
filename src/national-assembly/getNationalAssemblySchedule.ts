@@ -1,4 +1,15 @@
-import { translatedVariableDictionary } from '../constant';
+import {
+  위원회명,
+  일정_내용,
+  일정_시간,
+  일정_일자,
+  일정_종류,
+  행사_장소,
+  행사_주체자,
+  회의_구분,
+  회의_차수,
+  회의_회기,
+} from '../constant';
 import { callOpenApi } from '../functional';
 import { PaginationType } from '../types/callOpenApi';
 
@@ -27,16 +38,16 @@ type Argument = {
 const command = 'ALLSCHEDULE';
 
 const transform = (v: Row) => ({
-  [translatedVariableDictionary['일정_종류']]: v.SCH_KIND,
-  [translatedVariableDictionary['일정_내용']]: v.SCH_CN,
-  [translatedVariableDictionary['일정_일자']]: v.SCH_DT,
-  [translatedVariableDictionary['일정_시간']]: v.SCH_TM,
-  [translatedVariableDictionary['회의_구분']]: v.CONF_DIV,
-  [translatedVariableDictionary['위원회명']]: v.CMIT_NM,
-  [translatedVariableDictionary['회의_회기']]: v.CONF_SESS,
-  [translatedVariableDictionary['회의_차수']]: v.CONF_DGR,
-  [translatedVariableDictionary['행사_주체자']]: v.EV_INST_NM,
-  [translatedVariableDictionary['행사_장소']]: v.EV_PLC,
+  [일정_종류]: v.SCH_KIND,
+  [일정_내용]: v.SCH_CN,
+  [일정_일자]: v.SCH_DT,
+  [일정_시간]: v.SCH_TM,
+  [회의_구분]: v.CONF_DIV,
+  [위원회명]: v.CMIT_NM,
+  [회의_회기]: v.CONF_SESS,
+  [회의_차수]: v.CONF_DGR,
+  [행사_주체자]: v.EV_INST_NM,
+  [행사_장소]: v.EV_PLC,
 });
 /**
  * @description call https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11437

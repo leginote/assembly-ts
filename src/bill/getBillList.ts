@@ -1,6 +1,30 @@
 import { callOpenApi } from '../functional';
 import { PaginationType } from '../types/callOpenApi';
-import { translatedVariableDictionary } from '../constant';
+import {
+  대,
+  대표발의자,
+  대표발의자코드,
+  법사위상정일,
+  법사위처리결과,
+  법사위처리일,
+  법사위회부일,
+  본회의심의결과,
+  소관위,
+  소관위상정일,
+  소관위처리결과,
+  소관위처리일,
+  소관위코드,
+  소관위회부일,
+  위원회심사_처리일,
+  의결일,
+  의안ID,
+  의안명,
+  의안번호,
+  의안상세정보_URL,
+  제안일,
+  제안자,
+  제안자구분,
+} from '../constant';
 
 // https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/O4K6HM0012064I15889
 // 법률안 심사 및 처리(의안검색) 구현
@@ -51,29 +75,29 @@ type Argument = {
 const command = 'TVBPMBILL11';
 
 const transform = (v: Row) => ({
-  [translatedVariableDictionary['의안ID']]: v.BILL_ID,
-  [translatedVariableDictionary['의안번호']]: v.BILL_NO,
-  [translatedVariableDictionary['대']]: v.AGE,
-  [translatedVariableDictionary['의안명']]: v.BILL_NAME,
-  [translatedVariableDictionary['제안자']]: v.PROPOSER,
-  [translatedVariableDictionary['제안자구분']]: v.PROPOSER_KIND,
-  [translatedVariableDictionary['제안일']]: v.PROPOSE_DT,
-  [translatedVariableDictionary['소관위코드']]: v.CURR_COMMITTEE_ID,
-  [translatedVariableDictionary['소관위']]: v.CURR_COMMITTEE,
-  [translatedVariableDictionary['소관위회부일']]: v.COMMITTEE_DT,
-  [translatedVariableDictionary['위원회심사_처리일']]: v.COMMITTEE_PROC_DT,
-  [translatedVariableDictionary['의안상세정보_URL']]: v.LINK_URL,
-  [translatedVariableDictionary['대표발의자']]: v.RST_PROPOSER,
-  [translatedVariableDictionary['법사위처리결과']]: v.LAW_PROC_RESULT_CD,
-  [translatedVariableDictionary['법사위처리일']]: v.LAW_PROC_DT,
-  [translatedVariableDictionary['법사위상정일']]: v.LAW_PRESENT_DT,
-  [translatedVariableDictionary['법사위회부일']]: v.LAW_SUBMIT_DT,
-  [translatedVariableDictionary['소관위처리결과']]: v.CMT_PROC_RESULT_CD,
-  [translatedVariableDictionary['소관위처리일']]: v.CMT_PROC_DT,
-  [translatedVariableDictionary['소관위상정일']]: v.CMT_PRESENT_DT,
-  [translatedVariableDictionary['대표발의자코드']]: v.RST_MONA_CD,
-  [translatedVariableDictionary['본회의심의결과']]: v.PROC_RESULT_CD,
-  [translatedVariableDictionary['의결일']]: v.PROC_DT,
+  [의안ID]: v.BILL_ID,
+  [의안번호]: v.BILL_NO,
+  [대]: v.AGE,
+  [의안명]: v.BILL_NAME,
+  [제안자]: v.PROPOSER,
+  [제안자구분]: v.PROPOSER_KIND,
+  [제안일]: v.PROPOSE_DT,
+  [소관위코드]: v.CURR_COMMITTEE_ID,
+  [소관위]: v.CURR_COMMITTEE,
+  [소관위회부일]: v.COMMITTEE_DT,
+  [위원회심사_처리일]: v.COMMITTEE_PROC_DT,
+  [의안상세정보_URL]: v.LINK_URL,
+  [대표발의자]: v.RST_PROPOSER,
+  [법사위처리결과]: v.LAW_PROC_RESULT_CD,
+  [법사위처리일]: v.LAW_PROC_DT,
+  [법사위상정일]: v.LAW_PRESENT_DT,
+  [법사위회부일]: v.LAW_SUBMIT_DT,
+  [소관위처리결과]: v.CMT_PROC_RESULT_CD,
+  [소관위처리일]: v.CMT_PROC_DT,
+  [소관위상정일]: v.CMT_PRESENT_DT,
+  [대표발의자코드]: v.RST_MONA_CD,
+  [본회의심의결과]: v.PROC_RESULT_CD,
+  [의결일]: v.PROC_DT,
 });
 
 /**
@@ -96,5 +120,5 @@ export const getBillList = async ({ page, take, ...rest }: Argument) => {
       PROC_DT: rest.resolutionDate,
     }
   );
-  return res.TVBPMBILL11[1].row.map(transform);
+  return res[command][1].row.map(transform);
 };
