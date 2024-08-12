@@ -15,3 +15,8 @@ run `yarn test`
 
 but, you want targetting test
 you can type `yarn test src/{directory name}`
+
+## Pull Reqeust
+
+We do not care about the number, or style of commits in your history, because we squash merge every PR into main.
+Feel free to commit in whatever style you feel comfortable with.
