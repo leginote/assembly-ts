@@ -8,6 +8,8 @@ We use yarn berry with yarn@4
 2. install node > 20
 3. yarn set version berry
 4. yarn install
+5. install vscode extension `./vscode/extensions.json`
+   if you are not a vscode users, you can follow next link `https://yarnpkg.com/getting-started/editor-sdks`
 
 ## Testing
 
