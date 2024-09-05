@@ -1,0 +1,14 @@
+{
+  "name": "Node.js DevContainer",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "remoteUser": "root",
+  "postCreateCommand": "yarn install",
+  "workspaceFolder": "/workspace",
+  "mounts": ["source=${localWorkspaceFolder},target=/workspace,type=bind"],
+  "customizations": {
+    "vscode": {
+      "extensions": ["arcanis.vscode-zipfs", "esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+    }
+  }
+}
