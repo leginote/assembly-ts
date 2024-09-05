@@ -29,7 +29,7 @@ import {
 // https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/O4K6HM0012064I15889
 // 법률안 심사 및 처리(의안검색) 구현
 
-interface Bill {
+interface ApiResponseParameter {
   BILL_ID: string; // 의안ID
   BILL_NO: string; // 의안번호
   AGE: string; // 대
@@ -56,7 +56,7 @@ interface Bill {
 }
 
 type Row = {
-  [k in keyof Bill]: Bill[k] | null;
+  [k in keyof ApiResponseParameter]: ApiResponseParameter[k] | null;
 };
 
 type Argument = {
