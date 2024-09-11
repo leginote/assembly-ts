@@ -13,7 +13,7 @@ import {
 import { callOpenApi } from '../functional';
 import { PaginationType } from '../types/callOpenApi';
 
-interface NationalAssemblySchedule {
+interface ApiResponseParameter {
   SCH_KIND: string; // 일정종류
   SCH_CN: string; // 일정내용
   SCH_DT: string; // 일자
@@ -27,7 +27,7 @@ interface NationalAssemblySchedule {
 }
 
 type Row = {
-  [k in keyof NationalAssemblySchedule]: NationalAssemblySchedule[k] | null;
+  [k in keyof ApiResponseParameter]: ApiResponseParameter[k] | null;
 };
 
 type Argument = {

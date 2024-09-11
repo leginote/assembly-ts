@@ -27,7 +27,7 @@ import {
   직책명,
 } from '../constant';
 
-interface Lawmaker {
+interface ApiResponseParameter {
   NAAS_CD: string; // 국회의원코드
   NAAS_NM: string; // 국회의원명
   NAAS_CH_NM: string; // 국회의원한자명
@@ -55,7 +55,7 @@ interface Lawmaker {
 }
 
 type Row = {
-  [k in keyof Lawmaker]: Lawmaker[k] | null;
+  [k in keyof ApiResponseParameter]: ApiResponseParameter[k] | null;
 };
 
 type Argument = {
