@@ -1,4 +1,5 @@
 .github
+.gitattributes
 .vscode
 .yarn
 .yarnrc.yml
@@ -6,13 +7,13 @@
 .nvmrc
 
 .eslintrc.js
-.prettierrc.js
+.prettierrc
 .prettierignore
 
 .mise.toml
 
 tsconfig.json
-vitest.config.ts
+vitest.config.mts
 
 src
 node_modules
